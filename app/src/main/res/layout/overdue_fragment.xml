@@ -1,0 +1,41 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/overdue_frag"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".active_member">
+
+    <!-- Label -->
+
+    <!-- RecyclerView (scrolls on its own) -->
+
+    <TextView
+        android:id="@+id/label_overdue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="70dp"
+        android:text="Overdue Members"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.16" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_active"
+        android:layout_width="334dp"
+        android:layout_height="570dp"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_overdue"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="13dp"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>
