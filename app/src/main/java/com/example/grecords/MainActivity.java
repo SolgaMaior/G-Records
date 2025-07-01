@@ -1,4 +1,5 @@
 package com.example.grecords;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,8 +18,6 @@ import com.google.android.material.search.SearchBar;
 import com.google.android.material.search.SearchView;
 
 public class MainActivity extends AppCompatActivity {
-
-
 
     @SuppressLint("ResourceType")
     @Override
@@ -52,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
 
-
         SearchBar searchBar = findViewById(R.id.search_bar);
         SearchView searchView = findViewById(R.id.search_view);
 
@@ -65,56 +63,27 @@ public class MainActivity extends AppCompatActivity {
                 // Now we can safely start polling or watching text
                 searchView.getEditText().addTextChangedListener(new TextWatcher() {
                     @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
 
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
                         // 👇 Set the text in the SearchBar to match input
                         searchBar.setText(s.toString());
+                        // Propagate search query to current fragment
+                        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+                        if (currentFragment instanceof SearchableFragment) {
+                            ((SearchableFragment) currentFragment).onSearchQuery(s.toString());
+                        }
                     }
 
                     @Override
-                    public void afterTextChanged(Editable s) {}
+                    public void afterTextChanged(Editable s) {
+                    }
                 });
 
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         bottomNavigation.setOnItemReselectedListener(new NavigationBarView.OnItemReselectedListener() {
             @Override
@@ -128,9 +97,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
 
     }
 }

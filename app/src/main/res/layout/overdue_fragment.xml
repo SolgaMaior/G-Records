@@ -28,7 +28,7 @@
         app:layout_constraintVertical_bias="0.16" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_active"
+        android:id="@+id/overdue_recycler"
         android:layout_width="334dp"
         android:layout_height="570dp"
         android:clipToPadding="false"

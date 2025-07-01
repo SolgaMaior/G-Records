@@ -16,17 +16,16 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class view_member extends Fragment {
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.view_member, container, false);
-
 
         ExtendedFloatingActionButton addbtn = view.findViewById(R.id.add_member);
 
@@ -42,21 +41,22 @@ public class view_member extends Fragment {
                 startDateInput.setOnClickListener(s -> showDatePicker(startDateInput));
                 endDateInput.setOnClickListener(s -> showDatePicker(endDateInput));
 
-                new MaterialAlertDialogBuilder(requireContext())
+                new MaterialAlertDialogBuilder(requireContext(), R.style.MaterialAlertDialogStyle)
                         .setTitle("Add Member")
                         .setView(dialogView)
                         .setPositiveButton("Add", (dialog, which) -> {
                             String name = nameInput.getText().toString().trim();
                             String start = startDateInput.getText().toString().trim();
                             String end = endDateInput.getText().toString().trim();
-
-                            // Handle the values
-                            Toast.makeText(getContext(), "Added: " + name+start+end, Toast.LENGTH_SHORT).show();
+                            MemberModelClass newMember = new MemberModelClass(name, start, end);
+                            MemberRepository.getInstance().addMember(newMember);
+                            Toast.makeText(getContext(), "Added: " + name + start + end, Toast.LENGTH_SHORT).show();
                         })
                         .setNegativeButton("Cancel", null)
                         .show();
 
             }
+
             private void showDatePicker(TextInputEditText target) {
                 Calendar calendar = Calendar.getInstance();
                 Context context = new ContextThemeWrapper(getContext(), R.style.Base_Theme_GRecords);
@@ -96,16 +96,6 @@ public class view_member extends Fragment {
                         .commit();
             }
         });
-
-
-
-
-
-
-
-
-
-
 
         return view;
     }

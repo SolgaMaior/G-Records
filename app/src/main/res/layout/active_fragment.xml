@@ -26,6 +26,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.16" />
 
+    <Button
+        android:id="@+id/btn_sort_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Sort by End Date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_active" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_active"
         android:layout_width="334dp"
@@ -33,7 +43,7 @@
         android:clipToPadding="false"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/label_active"
+        app:layout_constraintTop_toBottomOf="@id/btn_sort_toggle"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="13dp" />
